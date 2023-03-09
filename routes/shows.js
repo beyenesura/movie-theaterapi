@@ -19,6 +19,10 @@ router.put('/:id/rating', (req, res) => {
 
 // PUT update the status of a show
 router.put('/:id/status', (req, res) => {
+const { status } = req.body;
+if (!status || !status.trim() || status.length < 5 || status.length > 25) {
+return res.status(400).send('Invalid status');
+}
 });
 
 // DELETE a show
